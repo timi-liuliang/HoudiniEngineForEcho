@@ -1,5 +1,4 @@
 #include "HoudiniModule.h"
-#include "engine/core/memory/MemAllocDef.h"
 #include "HoudiniDigitalAsset.h"
 
 namespace Echo
@@ -10,7 +9,7 @@ namespace Echo
     
     void HoudiniModule::registerTypes()
     {
-        REGISTER_MODULE(HoudiniDigitalAsset)
+		Class::registerType<HoudiniDigitalAsset>();
     }
     
     void HoudiniModule::update(float elapsedTime)
