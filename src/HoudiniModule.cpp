@@ -1,19 +1,15 @@
 #include "HoudiniModule.h"
-#include "engine/core/memory/MemAllocDef.h"
+#include "HoudiniDigitalAsset.h"
 
 namespace Echo
 {
-	void registerModules()
-	{
-	}
-
     HoudiniModule::HoudiniModule()
     {
     }
     
     void HoudiniModule::registerTypes()
     {
-        
+		Class::registerType<HoudiniDigitalAsset>();
     }
     
     void HoudiniModule::update(float elapsedTime)

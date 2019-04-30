@@ -15,9 +15,6 @@ ELSE()
 	LINK_DIRECTORIES(${ECHO_ROOT_PATH}/lib/Win64/Release)
 ENDIF()
 
-# Locate Houdini's libraries and header files.
-FIND_PACKAGE(Houdini REQUIRED)
-
 # query all files
 FILE( GLOB_RECURSE HEADER_FILES *.h *.inl)
 FILE( GLOB_RECURSE SOURCE_FILES *.c *.cpp *.mm)
@@ -34,8 +31,8 @@ ADD_LIBRARY(${MODULE_NAME} SHARED ${ALL_FILES})
 SET_TARGET_PROPERTIES(${MODULE_NAME} PROPERTIES FOLDER "")
 
 # Link libraries
-TARGET_LINK_LIBRARIES(${MODULE_NAME} zlib engine lua freeimage)
-TARGET_LINK_LIBRARIES(${MODULE_NAME} Houdini)
+TARGET_LINK_LIBRARIES(${MODULE_NAME} zlib engine lua freeimage pugixml)
+
 
 IF(ECHO_BUILD_PLATFORM_MAC)
     # AddFrameWork Macro
@@ -45,10 +42,15 @@ IF(ECHO_BUILD_PLATFORM_MAC)
 
     ADD_FRAMEWORK(AppKit)
     ADD_FRAMEWORK(QuartzCore)
+    ADD_FRAMEWORK(Houdini)
 
     SET(FRAMEWORKS "${FRAMEWORKS} -ObjC")
     SET(CMAKE_SHARED_LINKER_FLAGS ${FRAMEWORKS})
 ELSE()
+    # Locate Houdini's libraries and header files.
+    FIND_PACKAGE(Houdini REQUIRED)
+
+    TARGET_LINK_LIBRARIES(${MODULE_NAME} Houdini)
 ENDIF()
 
 # succeed message
