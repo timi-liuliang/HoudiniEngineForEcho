@@ -5,22 +5,22 @@
 	"offset": [ 0, -504 ],
 	"cook_regions": [
 		{
-			"min_x": 378,
-			"min_y": -504,
-			"max_x": 504,
-			"max_y": -378
+			"min_x": -128,
+			"min_y": -128,
+			"max_x": 0,
+			"max_y": 0
 		},
 		{
-			"min_x": 378,
-			"min_y": -378,
-			"max_x": 504,
-			"max_y": -252
+			"min_x": 0,
+			"min_y": -128,
+			"max_x": 128,
+			"max_y": 0
 		},
 		{
-			"min_x": 126,
-			"min_y": -252,
-			"max_x": 252,
-			"max_y": -126
+			"min_x": 0,
+			"min_y": 0,
+			"max_x": 128,
+			"max_y": 128
 		}
 	]
 }
