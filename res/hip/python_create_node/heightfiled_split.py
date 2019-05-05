@@ -15,11 +15,11 @@ rootNode = node.node('..')
 
 # select current node
 node.setDisplayFlag(True)
-node.setRenderFlag(True) 
+node.setRenderFlag(True)
 
 # delete nodes
-removeSubChildrenOfType(rootNode, hou.sopNodeTypeCategory().nodeTypes()['heightfield_crop'])
-removeSubChildrenOfType(rootNode, hou.sopNodeTypeCategory().nodeTypes()['merge'])
+#removeSubChildrenOfType(rootNode, hou.sopNodeTypeCategory().nodeTypes()['heightfield_crop'])
+#removeSubChildrenOfType(rootNode, hou.sopNodeTypeCategory().nodeTypes()['merge'])
 
 # load json config file
 json_path = node.parm('JsonConfigPath').eval()
