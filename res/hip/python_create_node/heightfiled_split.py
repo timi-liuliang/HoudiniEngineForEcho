@@ -11,7 +11,7 @@ def removeSubChildrenOfType(node, node_type):
 
 # Add code to modify contents of geo.
 # Use drop down menu to select examples.
-rootNode = hou.node('/obj/geo1')
+rootNode = node.node('..')
 
 # delete nodes
 removeSubChildrenOfType(rootNode, hou.sopNodeTypeCategory().nodeTypes()['heightfield_crop'])
@@ -40,7 +40,7 @@ for idx, cook_region in enumerate(json_obj['cook_regions']):
     newCropNode.setInput(0, node)
 
     # connect merge node
-    mergeNode = hou.node('/obj/geo1/merge1')
+    mergeNode = node.node('../merge1')
     mergeNode.setInput(idx, newCropNode)
 
 # layout
