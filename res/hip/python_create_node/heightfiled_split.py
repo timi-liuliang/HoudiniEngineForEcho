@@ -13,12 +13,20 @@ def removeSubChildrenOfType(node, node_type):
 # Use drop down menu to select examples.
 rootNode = node.node('..')
 
+# select current node
+node.setDisplayFlag(True)
+node.setRenderFlag(True) 
+
 # delete nodes
 removeSubChildrenOfType(rootNode, hou.sopNodeTypeCategory().nodeTypes()['heightfield_crop'])
+removeSubChildrenOfType(rootNode, hou.sopNodeTypeCategory().nodeTypes()['merge'])
 
 # load json config file
 json_path = node.parm('JsonConfigPath').eval()
 json_obj  = json.load(open(json_path))
+
+# create merge node
+mergeNode = rootNode.createNode('merge')
 
 # iterate cook regions
 for idx, cook_region in enumerate(json_obj['cook_regions']):
@@ -40,8 +48,11 @@ for idx, cook_region in enumerate(json_obj['cook_regions']):
     newCropNode.setInput(0, node)
 
     # connect merge node
-    mergeNode = node.node('../merge1')
     mergeNode.setInput(idx, newCropNode)
 
 # layout
 node.parent().layoutChildren()
+
+# select merge node
+mergeNode.setDisplayFlag(True)
+mergeNode.setRenderFlag(True)
